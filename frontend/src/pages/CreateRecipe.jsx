@@ -29,7 +29,7 @@ const CreateRecipe = () => {
   //         withCredentials: true,
   //       };
   //       const { data } = await axios.post(
-  //         "http://localhost:5000/api/upload",
+  //         "https://recipe-social-7hoa.onrender.com/api/upload",
   //         formData,
   //         config
   //       );
@@ -62,7 +62,7 @@ const CreateRecipe = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/recipes",
+        "https://recipe-social-7hoa.onrender.com/api/recipes",
         {
           title,
           description,
@@ -153,7 +153,7 @@ const CreateRecipe = () => {
 Step 1: Preheat oven to 350°F
 Step 2: Mix dry ingredients
 ..."
-                        className="w-full border border-gray-300 rounded py-4 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all placeholder-gray-400 h-48 resize-none"
+                        className="w-full border border-gray-300 rounded py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all placeholder-gray-400 h-48 resize-none"
                       ></textarea>
                     </div>
                   </div>
@@ -166,7 +166,7 @@ Step 2: Mix dry ingredients
                       value={image}
                       onChange={(e) => setImage(e.target.value)}
                       placeholder="https://example.com/recipe-image.jpg"
-                      className="w-full border border-gray-300 rounded-xl py-4 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all placeholder-gray-400"
+                      className="w-full border border-gray-300 rounded py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all placeholder-gray-400"
                     />
                     <p className="text-sm text-gray-500 mt-2">
                       Paste the URL of your recipe image
@@ -204,7 +204,6 @@ Example: 2 cups flour, 1 tsp salt, 3 eggs"
                         <option value="Vegan">Vegan</option>
                         <option value="Indian">Indian</option>
                         <option value="Italian">Italian</option>
-                      
                         <option value="Other">Other</option>
                       </select>
                     </div>

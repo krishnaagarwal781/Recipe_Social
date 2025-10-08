@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const recipes = [
@@ -128,11 +129,13 @@ const Home = () => {
         </div>
 
         {/* Call to Action */}
+        <Link to="/create-recipe">
         <div className="text-center mt-12">
           <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
             Share Your Recipe
           </button>
         </div>
+        </Link>
       </div>
     </div>
   );

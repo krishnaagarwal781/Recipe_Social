@@ -14,7 +14,7 @@ const Profile = () => {
       if (user) {
         try {
           const { data } = await axios.get(
-            `http://localhost:5000/api/recipes?user=${user._id}`
+            `https://recipe-social-7hoa.onrender.com/api/recipes?user=${user._id}`
           );
           setUserRecipes(data.recipes);
           setProfileLoading(false);
@@ -65,7 +65,7 @@ const Profile = () => {
   if (profileError) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 flex items-center justify-center">
-        <div className="bg-white rounded-2xl shadow-lg p-8 text-center max-w-md">
+        <div className="bg-white rounded shadow-lg p-8 text-center max-w-md">
           <div className="text-6xl mb-4">😔</div>
           <h3 className="text-2xl font-bold text-gray-800 mb-4">
             Error Loading Profile
@@ -73,7 +73,7 @@ const Profile = () => {
           <p className="text-red-500 mb-6">{profileError}</p>
           <button
             onClick={() => window.location.reload()}
-            className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 inline-block"
+            className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-3 px-6 rounded transition-all duration-300 inline-block"
           >
             Try Again
           </button>
@@ -85,7 +85,7 @@ const Profile = () => {
   if (!user) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 flex items-center justify-center">
-        <div className="bg-white rounded-2xl shadow-lg p-8 text-center max-w-md">
+        <div className="bg-white rounded shadow-lg p-8 text-center max-w-md">
           <div className="text-6xl mb-4">🔒</div>
           <h3 className="text-2xl font-bold text-gray-800 mb-4">
             Authentication Required
@@ -95,7 +95,7 @@ const Profile = () => {
           </p>
           <Link
             to="/login"
-            className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 inline-block"
+            className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-3 px-6 rounded transition-all duration-300 inline-block"
           >
             Go to Login
           </Link>
@@ -118,7 +118,7 @@ const Profile = () => {
 
         <div className="max-w-6xl mx-auto">
           {/* User Info Card */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+          <div className="bg-white rounded shadow-xl p-8 mb-8">
             <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
               {/* Avatar */}
               <div className="flex-shrink-0">
@@ -135,13 +135,13 @@ const Profile = () => {
                 <p className="text-gray-600 text-lg mb-4">{user.email}</p>
 
                 <div className="flex flex-wrap gap-6 text-center">
-                  <div className="bg-orange-50 rounded-xl p-4 min-w-32">
+                  <div className="bg-orange-50 rounded p-4 min-w-32">
                     <div className="text-2xl font-bold text-orange-600">
                       {userRecipes.length}
                     </div>
                     <div className="text-sm text-gray-600">Recipes Created</div>
                   </div>
-                  <div className="bg-amber-50 rounded-xl p-4 min-w-32">
+                  <div className="bg-amber-50 rounded p-4 min-w-32">
                     <div className="text-2xl font-bold text-amber-600">
                       {user.favoriteRecipes ? user.favoriteRecipes.length : 0}
                     </div>
@@ -154,7 +154,7 @@ const Profile = () => {
               <div className="flex-shrink-0">
                 <Link
                   to="/create-recipe"
-                  className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center space-x-2"
+                  className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-3 px-6 rounded transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center space-x-2"
                 >
                   <svg
                     className="w-5 h-5"
@@ -177,7 +177,7 @@ const Profile = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* My Recipes Section */}
-            <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="bg-white rounded shadow-xl p-8">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold text-gray-900">My Recipes</h3>
                 <span className="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-semibold">
@@ -196,7 +196,7 @@ const Profile = () => {
                   </p>
                   <Link
                     to="/create-recipe"
-                    className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-2 px-6 rounded-xl transition-all duration-300 inline-block"
+                    className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-2 px-6 rounded transition-all duration-300 inline-block"
                   >
                     Create Your First Recipe
                   </Link>
@@ -207,7 +207,7 @@ const Profile = () => {
                     <Link
                       key={recipe._id}
                       to={`/recipes/${recipe._id}`}
-                      className="block border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:border-orange-200 group"
+                      className="block border border-gray-200 rounded p-4 hover:shadow-lg transition-all duration-300 hover:border-orange-200 group"
                     >
                       <div className="flex items-center space-x-4">
                         {recipe.image ? (
@@ -265,7 +265,7 @@ const Profile = () => {
             </div>
 
             {/* Favorite Recipes Section */}
-            <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="bg-white rounded shadow-xl p-8">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold text-gray-900">
                   Favorite Recipes
@@ -286,7 +286,7 @@ const Profile = () => {
                   </p>
                   <Link
                     to="/recipes"
-                    className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-2 px-6 rounded-xl transition-all duration-300 inline-block"
+                    className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-2 px-6 rounded transition-all duration-300 inline-block"
                   >
                     Explore Recipes
                   </Link>
@@ -297,7 +297,7 @@ const Profile = () => {
                     <Link
                       key={recipe._id}
                       to={`/recipes/${recipe._id}`}
-                      className="block border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:border-amber-200 group"
+                      className="block border border-gray-200 rounded p-4 hover:shadow-lg transition-all duration-300 hover:border-amber-200 group"
                     >
                       <div className="flex items-center space-x-4">
                         {recipe.image ? (

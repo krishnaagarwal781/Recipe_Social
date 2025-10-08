@@ -16,7 +16,7 @@ const RecipeList = () => {
     const fetchRecipes = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/api/recipes?keyword=${keyword}&category=${category}&sortBy=${sortBy}&pageNumber=${page}`
+          `https://recipe-social-7hoa.onrender.com/api/recipes?keyword=${keyword}&category=${category}&sortBy=${sortBy}&pageNumber=${page}`
         );
         setRecipes(data.recipes);
         setPages(data.pages);

@@ -20,7 +20,7 @@ const EditRecipe = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/recipes/${id}`);
+        const res = await axios.get(`https://recipe-social-7hoa.onrender.com/api/recipes/${id}`);
         const recipeData = res.data;
         if (user && recipeData.user._id !== user._id) {
           navigate("/"); // Redirect if not authorized
@@ -55,7 +55,7 @@ const EditRecipe = () => {
           withCredentials: true,
         };
         const { data } = await axios.post(
-          "http://localhost:5000/api/upload",
+          "https://recipe-social-7hoa.onrender.com/api/upload",
           formData,
           config
         );
@@ -83,7 +83,7 @@ const EditRecipe = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/recipes/${id}`,
+        `https://recipe-social-7hoa.onrender.com/api/recipes/${id}`,
         {
           title,
           description,
@@ -213,7 +213,7 @@ Step 2: Mix dry ingredients
                         value={image}
                         onChange={(e) => setImage(e.target.value)}
                         placeholder="https://example.com/recipe-image.jpg"
-                        className="w-full border border-gray-300 rounded-xl py-4 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all placeholder-gray-400"
+                        className="w-full border border-gray-300 rounded py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all placeholder-gray-400"
                       />
                       <p className="text-sm text-gray-500 mt-2">
                         Enter the full URL of your recipe image

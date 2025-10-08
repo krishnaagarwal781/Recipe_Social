@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/auth/profile', { withCredentials: true });
+        const res = await axios.get('https://recipe-social-7hoa.onrender.com/api/auth/profile', { withCredentials: true });
         setUser(res.data);
       } catch (err) {
         setUser(null);
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });
+      await axios.post('https://recipe-social-7hoa.onrender.com/api/auth/logout', {}, { withCredentials: true });
       setUser(null);
     } catch (err) {
       console.error('Logout failed:', err);

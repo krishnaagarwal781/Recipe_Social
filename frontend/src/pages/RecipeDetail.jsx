@@ -19,7 +19,7 @@ const RecipeDetail = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/recipes/${id}`);
+        const res = await axios.get(`https://recipe-social-7hoa.onrender.com/api/recipes/${id}`);
         setRecipe(res.data);
         setLoading(false);
       } catch (err) {
@@ -40,12 +40,12 @@ const RecipeDetail = () => {
     setReviewError("");
     try {
       await axios.post(
-        `http://localhost:5000/api/recipes/${id}/reviews`,
+        `https://recipe-social-7hoa.onrender.com/api/recipes/${id}/reviews`,
         { rating: reviewRating, comment: reviewComment },
         { withCredentials: true }
       );
       // Refresh recipe data after review
-      const res = await axios.get(`http://localhost:5000/api/recipes/${id}`);
+      const res = await axios.get(`https://recipe-social-7hoa.onrender.com/api/recipes/${id}`);
       setRecipe(res.data);
       setReviewRating(0);
       setReviewComment("");
@@ -57,7 +57,7 @@ const RecipeDetail = () => {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this recipe?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/recipes/${id}`, {
+        await axios.delete(`https://recipe-social-7hoa.onrender.com/api/recipes/${id}`, {
           withCredentials: true,
         });
          setShowDeleteModal(false);
