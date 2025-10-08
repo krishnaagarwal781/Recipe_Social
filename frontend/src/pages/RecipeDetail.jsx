@@ -15,8 +15,7 @@ const RecipeDetail = () => {
   const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const isFavorite = user?.favoriteRecipes?.some((fav) => fav._id === id);
-
+  // const isFavorite = user?.favoriteRecipes?.some(fav => fav._id === id);
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
@@ -31,42 +30,9 @@ const RecipeDetail = () => {
     fetchRecipe();
   }, [id]);
 
-  const handleToggleFavorite = async () => {
-    if (!user) {
-      navigate("/login");
-      return;
-    }
-
-    try {
-      if (isFavorite) {
-        // Remove from favorites
-        await axios.delete(`http://localhost:5000/api/users/favorites/${id}`, {
-          withCredentials: true,
-        });
-      } else {
-        // Add to favorites
-        await axios.post(
-          `http://localhost:5000/api/users/favorites/${id}`,
-          {},
-          {
-            withCredentials: true,
-          }
-        );
-      }
-
-      // Refresh user data to update favorites
-      const { data: updatedUser } = await axios.get(
-        "http://localhost:5000/api/users/me",
-        {
-          withCredentials: true,
-        }
-      );
-      updateUser(updatedUser);
-    } catch (err) {
-      setError(err.response?.data?.msg || "Failed to update favorites");
-    }
+  const handleToggleFavorite = () => {
+    setIsFavorite(!isFavorite);
   };
-
 
   
   const handleReviewSubmit = async (e) => {
