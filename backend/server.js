@@ -3,7 +3,9 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const fileupload = require('express-fileupload'); // For image uploads
+const fileupload = require('express-fileupload');
+
+ // For image uploads
 
 dotenv.config();
 require('./config/cloudinary'); // Initialize Cloudinary
@@ -24,7 +26,8 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/upload', require('./routes/uploadRoutes')); // For image uploads
 app.use('/api/recipes', require('./routes/recipeRoutes'));
 app.use('/api/recipes', require('./routes/reviewRoutes')); // Reviews are nested under recipes
-app.use('/api/recipes', require('./routes/pdfRoutes')); // PDF export route
+app.use('/api/recipes', require('./routes/pdfRoutes')); 
+app.use("/api/favorites", favoriteRoutes);// PDF export route
 
 app.get('/', (req, res) => {
   res.send('API is running...');
